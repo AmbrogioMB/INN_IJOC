@@ -1,5 +1,5 @@
 """
-Code for the article 'Something something'
+Code for the article 'Multi-Objective Linear Ensembles for Robust and Sparse Training of Few-Bit Neural Networks'
 by A. M. Bernardelli, S. Gualandi, H. C. Lau, S. Milanesi, N. Yorke-Smith
 
 
