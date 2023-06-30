@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+authors:
+- family-names: "Bernardelli"
+  given-names: "Ambrogio Maria"
+  orcid: "https://orcid.org/0000-0002-2328-7062"
+- family-names: "Milanesi"
+  given-names: "Simone"
+  orcid: "https://orcid.org/0000-0002-6314-1965"
+- family-names: "Gualandi"
+  given-names: "Stefano"
+  orcid: "https://orcid.org/0000-0002-2111-3528"
+- family-names: "Lau"
+  given-names: "Hoong Chuin"
+  orcid: "https://orcid.org/0000-0002-5326-411X"
+- family-names: "Yorke-Smith"
+  given-names: "Neil"
+  orcid: "https://orcid.org/0000-0002-1814-3515"
+title: "Few-Bit Neural Networks - MILP Training"
+date-released: 2023-06-30
+url: "https://github.com/AmbrogioMB/INN_IJOC"
