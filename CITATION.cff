@@ -16,7 +16,7 @@ authors:
 - family-names: "Yorke-Smith"
   given-names: "Neil"
   orcid: "https://orcid.org/0000-0002-1814-3515"
-title: "Few-Bit Neural Networks - MILP Training"
+title: "MILP Training of Few-Bit Neural Networks"
 date-released: 2023-06-30
 version: 0.1.0
 url: "https://github.com/AmbrogioMB/INN_IJOC"
