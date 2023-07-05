@@ -141,15 +141,17 @@ def bnn_hybrid(x, y, N, bounds, numbers, instance_number):
     for j in range(1, N[L] + 1):
         for k in range(1, T + 1):
             if L != 1:
+                new_eps = eps / (2 * (P*(N[L-1]+1)))
                 model.addLConstr((1 - q[(j, k)]) * (5/2) + y[k - 1][j - 1] * (2/(P*(N[L-1]+1))) * gp.quicksum(
                     c[(i, L, j, k)] for i in range(1, N[L - 1] + 1)) >= 1 / 2, name="delete1_{}_{}".format(j, k))
                 model.addLConstr(- q[(j, k)] * (5/2) + y[k - 1][j - 1] * (2/(P*(N[L-1]+1))) * gp.quicksum(
-                    c[(i, L, j, k)] for i in range(1, N[L - 1] + 1)) <= 1 / 2 - eps, name="delete2_{}_{}".format(j, k))
+                    c[(i, L, j, k)] for i in range(1, N[L - 1] + 1)) <= 1 / 2 - new_eps, name="delete2_{}_{}".format(j, k))
             else:
+                new_eps = eps / (2 * (P * (len(active_indexes)+1)))
                 model.addLConstr((1 - q[(j, k)]) * (5 / 2) + y[k - 1][j - 1] * (2 / (P * (len(active_indexes)+1))) * gp.quicksum(
                     c_init[(i, 1, j, k)] for i in active_indexes) >= 1 / 2, name="delete1_{}_{}".format(j, k))
                 model.addLConstr(- q[(j, k)] * (5 / 2) + y[k - 1][j - 1] * (2 / (P * (len(active_indexes)+1))) * gp.quicksum(
-                    c_init[(i, 1, j, k)] for i in active_indexes) <= 1 / 2 - eps, name="delete2_{}_{}".format(j, k))
+                    c_init[(i, 1, j, k)] for i in active_indexes) <= 1 / 2 - new_eps, name="delete2_{}_{}".format(j, k))
 
     '''Constraints for the activation function modelling'''
     for l in range(2, L):
