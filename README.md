@@ -1,12 +1,12 @@
 # INN_IJOC
 
 Code for the article *Multi-Objective Linear Ensembles for Robust and Sparse Training of Few-Bit Neural Networks*
-by A. M. Bernardelli, S. Gualandi, H. C. Lau, S. Milanesi, N. Yorke-Smith
+by A. M. Bernardelli, S. Gualandi, H. C. Lau, S. Milanesi, N. Yorke-Smith.
 
 The repository contains one python file only, that can be used to reproduce the tests regarding the MNIST dataset.
 
 
-The PARAMETERS can be modified accordingly to the experiments
+The PARAMETERS can be modified accordingly to the experiments.
 
 For every value in the list `different_p`, the file produces 3*nm* + 1 csv files
 where *n* is the number of instances, namely `instances`, and *m* is the number of different numbers of
@@ -17,6 +17,6 @@ Fixed the training images *i* and the instance *j*, the file produces
 - `test_inn_i_j.csv`
     for every network of the ensemble, some infos about gap, time, etc., are collected
 - `test_inn_i_j_weights.csv`
-    for every network of the ensemble, the weights distribution is collected
+    for every network of the ensemble, the weights distribution is collected.
   
-The last file, `test_inn.csv`, contains results on accuracy and label statuses
+The last file, `test_inn.csv`, contains results on accuracy and label statuses.
