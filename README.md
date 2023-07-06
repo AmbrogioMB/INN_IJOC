@@ -1,7 +1,6 @@
 # INN_IJOC
 
 Code for the article *Multi-Objective Linear Ensembles for Robust and Sparse Training of Few-Bit Neural Networks*
-
 by A. M. Bernardelli, S. Gualandi, H. C. Lau, S. Milanesi, N. Yorke-Smith
 
 The repository contains one python file only, that can be used to reproduce the tests regarding the MNIST dataset.
