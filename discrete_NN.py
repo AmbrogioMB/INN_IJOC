@@ -11,11 +11,11 @@ training images, namely the length of the list "training_images"
 Fixed the training images i and the instance j, the file produces
 - labels_i_j.csv
     for every image used in the tests, how many networks labelled a certain image with a certain label
-- test_bnn_i_j.csv
+- test_inn_i_j.csv
     for every network of the ensemble, some infos about gap, time, etc., are collected
-- test_bnn_i_j_weights.csv
+- test_inn_i_j_weights.csv
     for every network of the ensemble, the weights distribution is collected
-The last file, test_bnn.csv, contains results on accuracy and label statuses
+The last file, test_inn.csv, contains results on accuracy and label statuses
 
 
 Last version: 2023/06/27
@@ -72,7 +72,7 @@ def neural_network_evaluator(input_data_e, weights_of_network, network_structure
     return label_of_image
 
 
-def bnn_hybrid(x, y, N, bounds, numbers, instance_number):
+def inn_hybrid(x, y, N, bounds, numbers, instance_number):
 
     """ Given x list of images, y list of labels, N network structure, bounds = max(abs(x)), numbers = [i, j] to
     distinguish between, and the instance number, it gives the dictionary of the weights of the trained network with
@@ -349,7 +349,7 @@ def bnn_hybrid(x, y, N, bounds, numbers, instance_number):
     info_one = [numbers[0], numbers[1], time_first_model, time_max_margin, time_min_weight, len(new_T), number_of_non_zeros_weight_mm,
                 total_weight_final, gap_max_margin, gap]
     '''
-    test_bnn_i_j.csv
+    test_inn_i_j.csv
     
     info_one = first training number / second training number / total time first model /total time for max margin solution 
                 / total time min weight solution / correctly classified training images / total number of non-zero 
@@ -357,7 +357,7 @@ def bnn_hybrid(x, y, N, bounds, numbers, instance_number):
                 gap min weight 
     '''
 
-    F = open("results_{}/test_bnn_{}_{}.csv".format(P, round(len(y) / 2), instance_number), "a")
+    F = open("results_{}/test_inn_{}_{}.csv".format(P, round(len(y) / 2), instance_number), "a")
     F.write(",".join([str(o) for o in info_one]))
     F.write("\n")
     F.close()
@@ -365,13 +365,13 @@ def bnn_hybrid(x, y, N, bounds, numbers, instance_number):
     info_two = [sum(value == p for value in weight_hybrid.values()) for p in range(-P, P+1)]
 
     '''
-    test_bnn_i_j_weights.csv
+    test_inn_i_j_weights.csv
     
     info_two = first training number / second training number / how many weights set to -P / how many weights set to -P + 1 / 
                 / how many weights set to -P + 2 / ... / how many weights set to P - 1 / how many weights set to P
     '''
 
-    E = open("results_{}/test_bnn_{}_{}_weights.csv".format(P, round(len(y) / 2), instance_number), "a")
+    E = open("results_{}/test_inn_{}_{}_weights.csv".format(P, round(len(y) / 2), instance_number), "a")
     E.write(",".join([str(o) for o in info_two]))
     E.write("\n")
     E.close()
@@ -399,7 +399,7 @@ training_images = [2, 6, 10]
 instances = 2
 # Digits to be distinguished, for a complete MNIST, set classes = [i for i in range(10)]
 classes = [4, 9]
-# Different values of P, for BNNs only, set different_p = [1]
+# Different values of P, for inns only, set different_p = [1]
 # for every value p in different_p, a folder named "results_p" needs to be created in the directory
 different_p = [1, 3]
 
@@ -486,7 +486,7 @@ for P in different_p:
                     ''' weights is a dictionary of dictionaries
                     weights[(i, j)] is the dictionary of the weights of the network that distinguishes
                     between i and j '''
-                    weights[(i, j)] = bnn_hybrid(x[(i, j)], y[(i, j)], N, bound, [i, j], z1)
+                    weights[(i, j)] = inn_hybrid(x[(i, j)], y[(i, j)], N, bound, [i, j], z1)
 
             # TESTS
             tests = []
@@ -591,14 +591,14 @@ for P in different_p:
                     count1 / len(my_label)] + percentage_status
 
             '''
-            test_bnn.csv file
+            test_inn.csv file
             
             info = number of images of each digit given to each net(i,j) / instances
                    / percentage of correct labels / percentage of wrong labels / percentage of non-labelled 
                    / percentage of each status 
             '''
 
-            G = open("results_{}/test_bnn.csv".format(P), "a")
+            G = open("results_{}/test_inn.csv".format(P), "a")
             G.write(",".join([str(x) for x in info]))
             G.write("\n")
             G.close()
